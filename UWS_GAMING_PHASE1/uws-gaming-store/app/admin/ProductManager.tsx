@@ -2,7 +2,7 @@
 import {useEffect,useState} from 'react';
 import type {Product,ProductOption} from '@/lib/products';
 import {money} from '@/lib/products';
-type Edit=Omit<Product,'id'> & {id?:string};
+type Edit=Omit<Product,'id'|'options'> & {id?:string;options:ProductOption[]};
 const empty=():Edit=>({name:'',category:'game',description:'',price_cents:0,stock:null,image_url:'',image_emoji:'🎮',badge:'DIGITAL',active:false,delivery_mode:'manual',options:[]});
 export default function ProductManager({token}:{token:string}){
  const [products,setProducts]=useState<Product[]>([]),[edit,setEdit]=useState<Edit|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[info,setInfo]=useState('');
